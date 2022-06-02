@@ -1,5 +1,6 @@
 score = 0;
 cross = true;
+var f=1;
 
 audio = new Audio('music.mp3');
 audiogo = new Audio('gameover.mp3');
@@ -46,13 +47,17 @@ setInterval(() => {
         gameOver.innerHTML = "Game Over - Reload to Play Again"
         obstacle.classList.remove('obstacleAni')
         audiogo.play();
+        alert(`Your Score is ${score}`);
+        f=0;
         setTimeout(() => {
             audiogo.pause();
             audio.pause(); 
         }, 1000);
     }
     else if (offsetX < 145 && cross) {
+        if(f==1){
         score += 1;
+        }
         updateScore(score);
         cross = false;
         setTimeout(() => {
